@@ -15,7 +15,6 @@ pub struct PnPDetectLibusb {
 
 impl<T: UsbContext> rusb::Hotplug<T> for PnPDetectLibusb {
     fn device_arrived(&mut self, device: Device<T>) {
-        info!("device arrived!");
         if let Some(str) = device2str(device) {
             self.callback.device_added(&str)
         }
